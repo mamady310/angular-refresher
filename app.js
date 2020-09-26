@@ -1,12 +1,17 @@
-const angularApp = angular.module('angularApp', []);
+var myApp = angular.module('myApp', []);
 
-angularApp.controller('mainController', ['$scope', function ($scope) {
+myApp.controller('mainController', function($scope, $log, $filter) {
+    
+   $scope.name = 'John';
+   $scope.formattedname = $filter('uppercase')($scope.name);
 
+   $log.info($scope.name);
+   $log.info($scope.formattedname);
+    
+});
 
-}]);
-
-const searchPeople = function (firstName, lastName, height, age, occupation){
-    return 'jane Doe';
+var searchPeople = function(firstName, $scope, height, age, occupation) {
+    return 'Jane Doe';
 }
 
 console.log(angular.injector().annotate(searchPeople));
