@@ -22,5 +22,15 @@ myApp.controller('mainController', ['$scope', '$filter','$http', function ($scop
 
        // start of post request
        $scope.newRule = '';
+       $scope.addRule = function (){
+           $http.post('url', {newRule: $scope.newRule})
+           .success(function(result) {
+            $scope.name = result;
+            $scope.newRule = '';
+           })
+           .error(function(data, status) {
+               console.log(data);
+           })
+       };
 
 }]);
