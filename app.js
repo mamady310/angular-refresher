@@ -10,6 +10,7 @@ myApp.controller('mainController', ['$scope', '$filter','$http', function ($scop
 
     $scope.characters = 5;
 
+    // get request
     $http.get('https://api.openbrewerydb.org/breweries?by_state=new_york')
        .success(function(result) {
         $scope.name = result;
@@ -18,5 +19,8 @@ myApp.controller('mainController', ['$scope', '$filter','$http', function ($scop
        .error(function(data, status) {
            console.log(data);
        })
+
+       // start of post request
+       $scope.newRule = '';
 
 }]);
