@@ -13,6 +13,7 @@ myApp.controller('mainController', ['$scope', '$filter','$http', function ($scop
     $http.get('https://api.openbrewerydb.org/breweries?by_state=new_york')
        .success(function(result) {
         $scope.name = result;
+        // console.log(result);
        })
        .error(function(data, status) {
            console.log(data);
