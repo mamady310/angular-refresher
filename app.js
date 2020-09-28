@@ -1,3 +1,7 @@
-window.addEventListener('click', function(){
-    console.log('hash changed: ' + window.location.hash);
-})
+var myApp = angular.module('myApp', []);
+
+myApp.controller('mainController', ['$scope', function($scope) {
+    
+
+    
+}]);
