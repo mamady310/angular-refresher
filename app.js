@@ -10,15 +10,12 @@ myApp.controller('mainController', ['$scope', '$filter','$http', function ($scop
 
     $scope.characters = 5;
 
-    var rulesrequest = new XMLHttpRequest();
-    rulesrequest.onreadystatechange = function () {
-        $scope.$apply(function () {
-            if (rulesrequest.readyState == 4 && rulesrequest.status == 200) {
-                $scope.rules = JSON.parse(rulesrequest.responseText);
-            }
-        });
-    }
-    rulesrequest.open("GET", "http://localhost:54765/api", true);
-    rulesrequest.send();
+    $http.get('https://api.openbrewerydb.org/breweries?by_state=new_york')
+       .success(function(result) {
+        $scope.name = result;
+       })
+       .error(function(data, status) {
+           console.log(data);
+       })
 
 }]);
