@@ -10,15 +10,19 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
     
     $scope.characters = 5;
     
-    var breweryrequest = new XMLHttpRequest();
-    brewereyrequest.onreadystatechange = function () {
-        if (breweryrequestrquest.readyState == 4 && brewertrequest.status == 200) {
-            $scope.drinks = JSON.parse(breweryrequest.responseText);
-        }
+    var brewery = new XMLHttpRequest();
+    brewery.onreadystatechange = function () {
+      
+        $scope.$apply(function() {
+            if (brewery.readyState == 4 && brewery.status == 200) {
+                $scope.drinks = JSON.parse(brewery.responseText);
+            }
+        })
+   
     };
 
-    breweryrequest.open("GET", "https://api.openbrewerydb.org/breweries?by_state=new_york");
-    breweryrequest.send();
+    brewery.open("GET", "https://api.openbrewerydb.org/breweries?by_state=new_york", true);
+    brewery.send();
     
     
     
