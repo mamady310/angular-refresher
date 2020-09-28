@@ -10,14 +10,16 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
     
     $scope.characters = 5;
     
-    $scope.rules = [
-      
-        { rulename: "Must be 5 characters" },
-        { rulename: "Must not be used elsewhere" },
-        { rulename: "Must be cool" }
-        
-    ];
+    var breweryrequest = new XMLHttpRequest();
+    brewereyrequest.onreadystatechange = function () {
+        if (breweryrequestrquest.readyState == 4 && brewertrequest.status == 200) {
+            $scope.drinks = JSON.parse(breweryrequest.responseText);
+        }
+    };
+
+    breweryrequest.open("GET", "https://api.openbrewerydb.org/breweries?by_state=new_york");
+    breweryrequest.send();
     
-    console.log($scope.rules);
+    
     
 }]);
