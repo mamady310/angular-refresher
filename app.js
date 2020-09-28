@@ -15,5 +15,9 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
         {rulename: "must have special characters"},
         {rulename: "must be cool"}
     ]
+
+    $scope.alertClick = function() {
+        alert("Clicked");
+    }
     
 }]);
